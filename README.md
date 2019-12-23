@@ -13,7 +13,3 @@ then , run the application using
 `npm start`
 
 Now you are able to see the app is loaded in http://localhost:3000/
-
-
-
-
