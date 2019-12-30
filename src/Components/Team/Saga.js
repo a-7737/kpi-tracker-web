@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import Api from '../../utils/api';
 
-const teams = [
+const dummyData = [
   {
     "id": "5dd68ad0010f7b444dd5fb11",
     "name": "India"
@@ -34,7 +34,7 @@ const teams = [
 
 function* fetchTeams() {
   try {
-    const user = yield call(Api.teams.getAllTeams);
+    const teams = yield call(Api.teams.getAllTeams);
     yield put({ type: "SET_TEAMS", teams });
   } catch (e) {
     // yield put({ type: "USER_FETCH_FAILED", message: e.message });
