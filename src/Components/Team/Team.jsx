@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { getAllTeams } from './Actions';
 import { getTeams } from './Selectors';
-import { Card, Button} from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import holder from '../../assets/holder.svg';
 
 class Team extends Component {
@@ -17,7 +17,7 @@ class Team extends Component {
     return (
       <div className="container Teams">
         <div className="row">
-          {teams.length > 0 && teams.map((team, key) =>
+          {teams && teams.length > 0 && teams.map((team, key) =>
             <Card border="light" className="m-2">
               <Card.Img variant="top" src={holder} />
               <Card.Body>
@@ -40,7 +40,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllTeams: () => dispatch(getAllTeams())
+  getAllTeams: () => dispatch(getAllTeams()),
 })
 
 
