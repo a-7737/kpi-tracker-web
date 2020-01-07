@@ -8,6 +8,13 @@
 
 .nav-item {
   margin-right: 10px;
+  &.active {
+    border: 1px solid rgba(61, 95, 154, 0.3);
+    padding: 8px 15px;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #130e0e;
+  }
 }
 .logo {
   width: 150px

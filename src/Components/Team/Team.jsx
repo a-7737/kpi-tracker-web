@@ -47,7 +47,7 @@ class Team extends Component {
     return (
       <div className="container Teams">
         <div className="row">
-          {teams.length > 0 && teams.map((team, key) =>
+          {teams && teams.length > 0 && teams.map((team, key) =>
             <Card border="light" className="m-2">
               <Card.Img variant="top" src={holder} />
               <Card.Body>

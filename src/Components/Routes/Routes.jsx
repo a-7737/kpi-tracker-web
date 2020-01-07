@@ -6,10 +6,10 @@ import Team from '../Team/Team';
 import Home from '../Home/Home';
 import ManageTeam from '../Team/ManageTeam';
 
-function Routes() {
+function Routes(props) {
   return (
     <Router>
-      <Header logo={logo} />
+      <Header logo={logo} history={props.history} />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/teams" component={Team} /> 

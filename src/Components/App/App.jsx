@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router />
+        <Router history={this.props.history} />
       </div>
     );
   }
