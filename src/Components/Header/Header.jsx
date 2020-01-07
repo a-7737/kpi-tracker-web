@@ -1,9 +1,9 @@
 import React from 'react';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/kpi.png';
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div className="Header">
       <Navbar expand="lg">
@@ -15,7 +15,7 @@ export default function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Item><Link to="/">Home</Link></Nav.Item>
+            <Nav.Item><Link className='active' to="/">Home</Link></Nav.Item>
             <Nav.Item><Link to="/teams">Teams</Link></Nav.Item>
           </Nav>
           <Form inline>
