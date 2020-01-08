@@ -17,12 +17,10 @@ class ManageTeam extends Component {
 
   componentDidMount() {
     const params = this.props.match.params;
-    console.log(params.id);
     if (params && params.id) {
       this.props.getTeam(params.id);
       // this.props.handleChange('id', params.id)
     } else {
-      console.log("hii");
       this.props.clearState();
     }
   }
