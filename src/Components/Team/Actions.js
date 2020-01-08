@@ -28,10 +28,6 @@ export function getTeam(id) {
 export function setTeam(team) {
   return { type: 'SET_TEAM', team };
 }
-
-export function updateTeam() {
-  return { type: 'UPDATE_TEAM' };
-}
 export function manageTeam(handler) {
   return { type: 'MANAGE_TEAM', handler };
 }

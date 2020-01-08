@@ -75,22 +75,6 @@ function* deleteTeam(action) {
   }
 }
 
-function* updateTeam() {
-
-  try {
-
-    const status = yield call(Api.teams.updateTeam, yield call(getCurrentTeam));
-    if (status === "Operation successful!") {
-      yield call(getAllTeams());
-      //yield call(callback);
-    } else {
-      yield put({ type: "ERROR", msg: "Update failed Try again" });
-    }
-
-  } catch (e) {
-    // yield put({ type: "USER_FETCH_FAILED", message: e.message });
-  }
-}
 
 function* manageTeam(action) {
   const { handler } = action;
@@ -99,7 +83,7 @@ function* manageTeam(action) {
     const team = state.team;
     if (team.id) {
       //update
-      const status = yield call(Api.teams.createTeam, team);
+      const status = yield call(Api.teams.updateTeam, team);
       yield call(handler);
     } else {
       //create

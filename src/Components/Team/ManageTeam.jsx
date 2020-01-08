@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { updateTeam, handleChange, getTeam, manageTeam } from './Actions';
+import { handleChange, getTeam, manageTeam } from './Actions';
 import { getError, getCurrentTeam } from './Selectors';
 
 
