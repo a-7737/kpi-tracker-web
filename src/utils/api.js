@@ -69,6 +69,14 @@ export const call = process.env.NODE_ENV === 'production'
   };
 
 export default {
+  reports: {
+    submitReport(data) {
+      return call(['updateKpiParameters'], {
+        method: 'POST',
+        body: data
+      });
+    }
+  },
   teams: {
     getAllTeams() {
       return call(['team'], {
