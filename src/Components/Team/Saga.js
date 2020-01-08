@@ -1,7 +1,7 @@
 import { call, put, takeLatest} from 'redux-saga/effects'
 import Api from '../../utils/api';
 import { getAllTeams} from './Actions';
-import { push } from 'react-router-redux';
+// import { push } from 'react-router-redux';
 import { getCurrentTeam } from './Selectors';
 
 const dummyData = [
