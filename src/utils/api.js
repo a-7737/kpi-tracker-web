@@ -85,9 +85,14 @@ export default {
             method: 'GET'
         });
       },
-      updateTeam(team) {
-        return call(['team', team], {
+      updateTeam() {
+        return call(['team'], {
             method: 'PUT'
+        });
+      },
+      createTeam() {
+        return call(['team'], {
+            method: 'POST'
         });
       }
   }

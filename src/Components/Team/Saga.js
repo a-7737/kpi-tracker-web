@@ -48,6 +48,7 @@ function* fetchTeamById(action) {
     try {
       const team = dummyData[0];
         // const team = yield call(Api.teams.getTeam,action.id);
+        console.log(action.id)
         yield put({ type: "SET_TEAM", team });
     } catch (e) {
         // yield put({ type: "USER_FETCH_FAILED", message: e.message });

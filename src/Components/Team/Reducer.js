@@ -18,17 +18,13 @@ export default function TeamReducer(state = initialState, action) {
       return {
         ...state, team: action.team
       }
-
       case 'ERROR':
         return {...state, error: action.msg }
 
       case 'ONCHANGE':
-        const { teamName } = action;
-        console.log(teamName, 'teamName')
-        const team = state.team;
-        team.name = teamName;
-        console.log(team, 'team', {...state, team })
-          return {...state, team }
+        return Object.assign({}, state, {
+          teamName: action.teamName
+        })
     
       default:
       return state
