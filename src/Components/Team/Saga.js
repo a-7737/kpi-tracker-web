@@ -37,8 +37,8 @@ const dummyData = [
 
 function* fetchTeams() {
   try {
-    // const teams = yield call(Api.teams.getAllTeams);
-    yield put({ type: "SET_TEAMS", dummyData });
+    const teams = yield call(Api.teams.getAllTeams);
+    yield put({ type: "SET_TEAMS", teams });
   } catch (e) {
     // yield put({ type: "USER_FETCH_FAILED", message: e.message });
   }
@@ -46,9 +46,8 @@ function* fetchTeams() {
 
 function* fetchTeamById(action) {
   try {
-    const team = dummyData[0];
-    // const team = yield call(Api.teams.getTeam,action.id);
-    console.log(action.id)
+    //const team = dummyData[0];
+    const team = yield call(Api.teams.getTeam,action.id);
     yield put({ type: "SET_TEAM", team });
   } catch (e) {
     // yield put({ type: "USER_FETCH_FAILED", message: e.message });
@@ -56,7 +55,6 @@ function* fetchTeamById(action) {
 }
 
 function* deleteTeam(action) {
-  console.log(action)
   const { id, callback } = action;
   try {
 

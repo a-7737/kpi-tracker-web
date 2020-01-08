@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getAllTeams, deleteTeam } from './Actions';
+import { getAllTeams, deleteTeam, clearState } from './Actions';
 import { getTeams, getError } from './Selectors';
 import { Card, Button } from 'react-bootstrap';
 import holder from '../../assets/holder.svg';
@@ -84,7 +84,8 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   getAllTeams: () => dispatch(getAllTeams()),
-  teamDelete: (id, callback) => dispatch(deleteTeam(id, callback))
+  teamDelete: (id, callback) => dispatch(deleteTeam(id, callback)),
+  clearState: () => dispatch(clearState())
 })
 
 

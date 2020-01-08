@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { handleChange, getTeam, manageTeam } from './Actions';
+import { handleChange, getTeam, manageTeam, clearState} from './Actions';
 import { getError, getCurrentTeam } from './Selectors';
 
 
@@ -17,10 +17,13 @@ class ManageTeam extends Component {
 
   componentDidMount() {
     const params = this.props.match.params;
-
+    console.log(params.id);
     if (params && params.id) {
       this.props.getTeam(params.id);
       // this.props.handleChange('id', params.id)
+    } else {
+      console.log("hii");
+      this.props.clearState();
     }
   }
 
@@ -72,7 +75,8 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   getTeam: (id) => dispatch(getTeam(id)),
   handleChange: (field, value) => dispatch(handleChange(field, value)),
-  manageTeam: (handler) => dispatch(manageTeam(handler))
+  manageTeam: (handler) => dispatch(manageTeam(handler)),
+  clearState : () => dispatch(clearState())
 
 })
 

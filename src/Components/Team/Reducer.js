@@ -4,6 +4,7 @@ const initialState = {
   team: { id: '', name: '' },
 }
 
+
 export default function TeamReducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_TEAMS':
@@ -27,7 +28,10 @@ export default function TeamReducer(state = initialState, action) {
         team: { ...state.team[field], value }
       })
     case 'CLEARSTATE':
-      return state = initialState;
+      const team =  { id: '', name: '' }
+      return Object.assign({}, state, {
+        team: { ...state.team, ...team }
+      })
     default:
       return state
   }
