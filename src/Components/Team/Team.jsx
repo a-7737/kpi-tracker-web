@@ -46,6 +46,7 @@ class Team extends Component {
     const { show, teamInfo } = this.state;
     return (
       <div className="container Teams">
+        <Button variant="primary" onClick={(e) => this.getTeamId(e,'')}>Create Team</Button>
         <div className="row">
           {teams && teams.length > 0 && teams.map((team, key) =>
             <Card border="light" className="m-2">
