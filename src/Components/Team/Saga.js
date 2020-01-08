@@ -84,10 +84,12 @@ function* manageTeam(action) {
     if (team.id) {
       //update
       const status = yield call(Api.teams.updateTeam, team);
+      yield put({ type: 'CLEARSTATE' })
       yield call(handler);
     } else {
       //create
       const status = yield call(Api.teams.createTeam, team.name);
+      yield put({ type: 'CLEARSTATE' })
       yield call(handler);
     }
 
