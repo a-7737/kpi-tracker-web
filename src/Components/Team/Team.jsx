@@ -15,8 +15,6 @@ class Team extends Component {
     this.deleteTeam = this.deleteTeam.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.getTeamId = this.getTeamId.bind(this);
-
-
   }
 
   componentDidMount() {
