@@ -56,8 +56,14 @@ class Team extends Component {
                 <Card.Text>
                   Team description can be added here
                 </Card.Text>
+                <div>
+                <div className="col-md-6"></div>
                 <Button variant="primary" onClick={(e) => this.deleteTeam(e,team)}>Delete Team</Button>
+                </div>
+                <div>
+                <div className="col-md-6"></div>
                 <Button variant="primary" onClick={(e) => this.getTeamId(e,team.id)}>Edit Team</Button>
+                </div>
 
               </Card.Body>
             </Card>

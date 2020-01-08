@@ -66,4 +66,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps,ManageTeam)
+export default connect(mapStateToProps, mapDispatchToProps)(ManageTeam)
