@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+
 const TeamReducerState = state => state.TeamReducer || {};
 
 const getTeams = () =>

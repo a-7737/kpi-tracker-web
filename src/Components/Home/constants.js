@@ -1,0 +1,9 @@
+export const CHANGE_VALUE = 'Home/CHANGE_VALUE';
+export const VALIDATE = 'Home/VALIDATE';
+export const SET_INVALID = 'Home/SET_INVALID';
+export const SET_VALID = 'Home/SET_VALID';
+export const SUBMIT = 'Termite/Signup/PreviousTreatment/SUBMIT';
+export const SUBMITTING = 'Home/SUBMITTING';
+export const SUBMITTED = 'Home/SUBMITTED';
+export const SUBMIT_FAILURE = 'Home/SUBMIT_FAILURE';
+export const SUBMIT_SUCCESS = 'Home/SUBMIT_SUCCESS';
