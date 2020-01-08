@@ -95,5 +95,32 @@ export default {
             method: 'POST'
         });
       }
-  }
+  },
+  kpis: {
+      getAllKpis() {
+        return call({
+          method: 'GET',
+        });
+      },
+      deleteTeam(id) {
+        return call([id], {
+          method: 'DELETE',
+        });
+      },
+      getTeam(id) {
+          return call([id], {
+              method: 'GET'
+          });
+        },
+        updateTeam() {
+          return call({
+              method: 'PUT'
+          });
+        },
+        createTeam() {
+          return call({
+              method: 'POST'
+          });
+        }
+    }
 };

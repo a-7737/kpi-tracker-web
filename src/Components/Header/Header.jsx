@@ -18,6 +18,8 @@ export default function Header(props) {
             <Nav.Item><Link className='active' to="/">Home</Link></Nav.Item>
             <Nav.Item><Link to="/teams">Teams</Link></Nav.Item>
             <Nav.Item><Link to="/manageteam">Create Team</Link></Nav.Item>
+            <Nav.Item><Link to="/kpi">Kpi</Link></Nav.Item>
+            <Nav.Item><Link to="/manageKpi">Create Kpi</Link></Nav.Item>
           </Nav>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
