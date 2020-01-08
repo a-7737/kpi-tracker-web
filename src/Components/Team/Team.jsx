@@ -40,9 +40,7 @@ class Team extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { teams, error } = this.props;
-    console.log(teams, 'teams', error)
     const { show, teamInfo } = this.state;
     return (
       <div className="container Teams">

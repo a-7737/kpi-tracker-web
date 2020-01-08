@@ -39,4 +39,8 @@ export function handleChange(field, value) {
   return { type: 'ONCHANGE', field, value };
 }
 
+export function clearState() {
+  return { type: 'CLEARSTATE' };
+}
+
 

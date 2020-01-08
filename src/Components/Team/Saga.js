@@ -48,7 +48,6 @@ function* fetchTeamById(action) {
   try {
     const team = dummyData[0];
     // const team = yield call(Api.teams.getTeam,action.id);
-    console.log(action.id)
     yield put({ type: "SET_TEAM", team });
   } catch (e) {
     // yield put({ type: "USER_FETCH_FAILED", message: e.message });
@@ -56,7 +55,6 @@ function* fetchTeamById(action) {
 }
 
 function* deleteTeam(action) {
-  console.log(action)
   const { id, callback } = action;
   try {
 
@@ -100,10 +98,12 @@ function* manageTeam(action) {
     if (team.id) {
       //update
       const status = yield call(Api.teams.createTeam, team);
+      yield put({ type: 'CLEARSTATE' })
       yield call(handler);
     } else {
       //create
       const status = yield call(Api.teams.createTeam, team.name);
+      yield put({ type: 'CLEARSTATE' })
       yield call(handler);
     }
 
