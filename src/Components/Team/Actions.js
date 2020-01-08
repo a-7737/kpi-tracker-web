@@ -29,8 +29,11 @@ export function setTeam(team) {
 return { type: 'SET_TEAM', team };
 }
 
-export function updateTeam(team) {
-  return { type: 'UPDATE_TEAM', team };
+export function updateTeam() {
+  return { type: 'UPDATE_TEAM'};
+}
+export function createTeam() {
+  return { type: 'CREATE_TEAM'};
 }
 export function handleChange(teamName) {
   return { type: 'ONCHANGE', teamName };
