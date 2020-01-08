@@ -74,6 +74,26 @@ export default {
       return call(['team'], {
         method: 'GET',
       });
-    }
+    },
+    deleteTeam(id) {
+      return call(['team', id], {
+        method: 'DELETE',
+      });
+    },
+    getTeam(id) {
+        return call(['team', id], {
+            method: 'GET'
+        });
+      },
+      updateTeam() {
+        return call(['team'], {
+            method: 'PUT'
+        });
+      },
+      createTeam() {
+        return call(['team'], {
+            method: 'POST'
+        });
+      }
   }
 };

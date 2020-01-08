@@ -3,9 +3,22 @@ import { createSelector } from 'reselect';
 const TeamReducerState = state => state.TeamReducer || {};
 
 const getTeams = () =>
-  createSelector(
+createSelector(
     TeamReducerState,
     simpleState => simpleState.teams,
-  );
+);
 
-export { TeamReducerState, getTeams };
+const getError = () =>
+createSelector(
+    TeamReducerState,
+    simpleState => simpleState.error,
+);
+
+const getCurrentTeam = () =>
+createSelector(
+    TeamReducerState,
+    simpleState => simpleState.team,
+);
+
+
+export { TeamReducerState, getTeams, getError, getCurrentTeam };

@@ -2,7 +2,6 @@ import { VALIDATE, SUBMIT, SUBMITTED } from "./constants";
 import { put, select, call, takeLatest, fork, takeEvery } from 'redux-saga/effects';
 import createValidator from '../../utils/createValidator';
 import { fromJS } from 'immutable';
-import { push } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
 
 
