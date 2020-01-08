@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getAllTeams ,deleteTeam} from './Actions';
+import { getAllTeams, deleteTeam } from './Actions';
 import { getTeams, getError } from './Selectors';
-import { Card, Button} from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import holder from '../../assets/holder.svg';
 import TeamDetails from './DeleteTeamModal';
 
@@ -11,12 +11,12 @@ class Team extends Component {
 
   constructor() {
     super();
-    this.state = { show: false, teamInfo: ''}
+    this.state = { show: false, teamInfo: '' }
     this.deleteTeam = this.deleteTeam.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.getTeamId = this.getTeamId.bind(this);
-    
-    
+
+
   }
 
   componentDidMount() {
@@ -28,15 +28,15 @@ class Team extends Component {
     this.setState({ show: !this.state.show, teamInfo: team });
   }
 
-    getTeamId(e, id) {
-        e.preventDefault();
-        this.props.history.push(`/manageteam/${id}`);
-        // this.setState({  id: id });
-    }
+  getTeamId(e, id) {
+    e.preventDefault();
+    this.props.history.push(`/manageteam/${id}`);
+    // this.setState({  id: id });
+  }
 
   toggleModal(e) {
     // e.preventDefault();
-    this.setState({ show: !this.state.show, teamInfo: ''})
+    this.setState({ show: !this.state.show, teamInfo: '' })
   }
 
   render() {
@@ -46,7 +46,7 @@ class Team extends Component {
     const { show, teamInfo } = this.state;
     return (
       <div className="container Teams">
-        <Button variant="primary" onClick={(e) => this.getTeamId(e,'')}>Create Team</Button>
+        <Button variant="primary create-team" onClick={(e) => this.getTeamId(e, '')}>Create Team</Button>
         <div className="row">
           {teams && teams.length > 0 && teams.map((team, key) =>
             <Card border="light" className="m-2">
@@ -57,12 +57,10 @@ class Team extends Component {
                   Team description can be added here
                 </Card.Text>
                 <div>
-                <div className="col-md-6"></div>
-                <Button variant="primary" onClick={(e) => this.deleteTeam(e,team)}>Delete Team</Button>
-                </div>
-                <div>
-                <div className="col-md-6"></div>
-                <Button variant="primary" onClick={(e) => this.getTeamId(e,team.id)}>Edit Team</Button>
+                  <div className="col-md-6"></div>
+
+                  <span className="manage-icons" variant="primary" onClick={(e) => this.deleteTeam(e, team)}><i class="far fa-trash-alt"></i></span>
+                  <span className="manage-icons" variant="primary" onClick={(e) => this.getTeamId(e, team.id)}><i class="far fa-edit"></i></span>
                 </div>
 
               </Card.Body>
@@ -70,11 +68,11 @@ class Team extends Component {
           )}
         </div>
         <TeamDetails
-            show={show}
-            teamInfo={teamInfo}
-            handleClose={this.toggleModal}
-            teamDelete={this.props.teamDelete}
-            error={error}
+          show={show}
+          teamInfo={teamInfo}
+          handleClose={this.toggleModal}
+          teamDelete={this.props.teamDelete}
+          error={error}
         />
       </div>
     )
@@ -83,12 +81,12 @@ class Team extends Component {
 
 const mapStateToProps = createStructuredSelector({
   teams: getTeams(),
-    error: getError()
+  error: getError()
 });
 
 const mapDispatchToProps = dispatch => ({
   getAllTeams: () => dispatch(getAllTeams()),
-  teamDelete:(id,callback) => dispatch(deleteTeam(id,callback))
+  teamDelete: (id, callback) => dispatch(deleteTeam(id, callback))
 })
 
 

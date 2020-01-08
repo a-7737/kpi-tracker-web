@@ -1,7 +1,7 @@
 const initialState = {
   teams: '',
   error: '',
-  team: {id: '', name: ''},
+  team: { id: '', name: '' },
 }
 
 export default function TeamReducer(state = initialState, action) {
@@ -14,19 +14,20 @@ export default function TeamReducer(state = initialState, action) {
       return {
         ...state, teams: action.dummyData
       }
-      case 'SET_TEAM':
+    case 'SET_TEAM':
       return {
         ...state, team: action.team
       }
-      case 'ERROR':
-        return {...state, error: action.msg }
+    case 'ERROR':
+      return { ...state, error: action.msg }
 
-      case 'ONCHANGE':
-        return Object.assign({}, state, {
-          teamName: action.teamName
-        })
-    
-      default:
+    case 'ONCHANGE':
+      const { field, value } = action;
+      return Object.assign({}, state, {
+        team: { ...state.team[field], value }
+      })
+
+    default:
       return state
   }
 }

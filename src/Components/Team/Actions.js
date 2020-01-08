@@ -10,13 +10,13 @@ export function setTeams(teams) {
 }
 
 export function deleteTeam(id, callback) {
-    return { type: 'DELETE_TEAM', id,callback };
+  return { type: 'DELETE_TEAM', id, callback };
 }
 
 
 
 export function error(msg) {
-    return { type: 'ERROR', msg };
+  return { type: 'ERROR', msg };
 }
 
 
@@ -26,17 +26,17 @@ export function getTeam(id) {
   return { type: 'GET_TEAM', id };
 }
 export function setTeam(team) {
-return { type: 'SET_TEAM', team };
+  return { type: 'SET_TEAM', team };
 }
 
 export function updateTeam() {
-  return { type: 'UPDATE_TEAM'};
+  return { type: 'UPDATE_TEAM' };
 }
-export function createTeam() {
-  return { type: 'CREATE_TEAM'};
+export function manageTeam(handler) {
+  return { type: 'MANAGE_TEAM', handler };
 }
-export function handleChange(teamName) {
-  return { type: 'ONCHANGE', teamName };
+export function handleChange(field, value) {
+  return { type: 'ONCHANGE', field, value };
 }
 
 

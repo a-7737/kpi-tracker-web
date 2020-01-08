@@ -1,6 +1,6 @@
-import { call, put, takeLatest} from 'redux-saga/effects'
+import { call, put, takeLatest, select } from 'redux-saga/effects'
 import Api from '../../utils/api';
-import { getAllTeams} from './Actions';
+import { getAllTeams } from './Actions';
 // import { push } from 'react-router-redux';
 import { getCurrentTeam } from './Selectors';
 
@@ -45,30 +45,30 @@ function* fetchTeams() {
 }
 
 function* fetchTeamById(action) {
-    try {
-      const team = dummyData[0];
-        // const team = yield call(Api.teams.getTeam,action.id);
-        console.log(action.id)
-        yield put({ type: "SET_TEAM", team });
-    } catch (e) {
-        // yield put({ type: "USER_FETCH_FAILED", message: e.message });
-    }
+  try {
+    const team = dummyData[0];
+    // const team = yield call(Api.teams.getTeam,action.id);
+    console.log(action.id)
+    yield put({ type: "SET_TEAM", team });
+  } catch (e) {
+    // yield put({ type: "USER_FETCH_FAILED", message: e.message });
+  }
 }
 
 function* deleteTeam(action) {
-    console.log(action)
-    const { id, callback } = action;
+  console.log(action)
+  const { id, callback } = action;
   try {
-    
+
     //yield put({ type: "ERROR", msg: "Delete failed Try again" });
-   // yield put({ type: "SET_TEAMS", dummyData });
+    // yield put({ type: "SET_TEAMS", dummyData });
     const status = yield call(Api.teams.deleteTeam, action.id);
-    if(status === "Operation successful!") {
+    if (status === "Operation successful!") {
       yield call(getAllTeams());
       yield call(callback);
-     } else {
-        yield put({ type: "ERROR", msg: "Delete failed Try again" });
-     }
+    } else {
+      yield put({ type: "ERROR", msg: "Delete failed Try again" });
+    }
 
   } catch (e) {
     // yield put({ type: "USER_FETCH_FAILED", message: e.message });
@@ -76,38 +76,41 @@ function* deleteTeam(action) {
 }
 
 function* updateTeam() {
-  
-try {
- 
-  const status = yield call(Api.teams.updateTeam, yield call(getCurrentTeam));
-  if(status === "Operation successful!") {
-    yield call(getAllTeams());
-    //yield call(callback);
-   } else {
-      yield put({ type: "ERROR", msg: "Update failed Try again" });
-   }
 
-} catch (e) {
-  // yield put({ type: "USER_FETCH_FAILED", message: e.message });
-}
-}
-
-function* createTeam() {
-  
   try {
-    
-    const status = yield call(Api.teams.createTeam, yield call(getCurrentTeam));
-    if(status === "Operation successful!") {
+
+    const status = yield call(Api.teams.updateTeam, yield call(getCurrentTeam));
+    if (status === "Operation successful!") {
       yield call(getAllTeams());
       //yield call(callback);
-     } else {
-        yield put({ type: "ERROR", msg: "Creation failed Try again" });
-     }
-  
+    } else {
+      yield put({ type: "ERROR", msg: "Update failed Try again" });
+    }
+
   } catch (e) {
     // yield put({ type: "USER_FETCH_FAILED", message: e.message });
   }
+}
+
+function* manageTeam(action) {
+  const { handler } = action;
+  try {
+    const state = yield select((state) => state.TeamReducer);
+    const team = state.team;
+    if (team.id) {
+      //update
+      const status = yield call(Api.teams.createTeam, team);
+      yield call(handler);
+    } else {
+      //create
+      const status = yield call(Api.teams.createTeam, team.name);
+      yield call(handler);
+    }
+
+  } catch (e) {
+    // yield put({ type: "USER_FETCH_FAILED", message: e.message });
   }
+}
 /*
   Alternatively you may use takeLatest.
 
@@ -119,8 +122,7 @@ function* TeamSaga() {
   yield takeLatest("GET_ALL_TEAMS", fetchTeams);
   yield takeLatest("GET_TEAM", fetchTeamById);
   yield takeLatest("DELETE_TEAM", deleteTeam);
-  yield takeLatest("UPDATE_TEAM", updateTeam);
-  yield takeLatest("CREATE_TEAM", createTeam);
+  yield takeLatest("MANAGE_TEAM", manageTeam);
 
 }
 
