@@ -26,7 +26,8 @@ export default function TeamReducer(state = initialState, action) {
       return Object.assign({}, state, {
         team: { ...state.team[field], value }
       })
-
+    case 'CLEARSTATE':
+      return state = initialState;
     default:
       return state
   }
