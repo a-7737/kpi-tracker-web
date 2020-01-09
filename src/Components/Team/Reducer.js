@@ -9,11 +9,11 @@ export default function TeamReducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_TEAMS':
       return {
-        ...state, teams: action.dummyData
+        ...state, teams: teams.result
       }
     case 'DELETE_TEAMS':
       return {
-        ...state, teams: action.dummyData
+        ...state, teams: teams.result
       }
     case 'SET_TEAM':
       return {
