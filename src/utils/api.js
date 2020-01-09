@@ -107,6 +107,23 @@ export default {
         method: 'GET',
         params: payload,
       });
+    },
+    createUser(user) {
+      return call(['user'], {
+        method: 'POST',
+        body: user,
+      });
+    },
+    deleteUser(id) {
+      return call(['user', id], {
+        method: 'DELETE',
+      });
+    },
+    updateUser(user) {
+      return call(['user'], {
+        method: 'PUT',
+        body: user,
+      });
     }
   }
 };
