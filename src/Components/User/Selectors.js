@@ -13,4 +13,10 @@ const getUserByUsernameAndPassword = () =>
     simpleState => simpleState.user,
   );
 
-export { UserReducerState, getUsers, getUserByUsernameAndPassword };
+const getMessage = () =>
+  createSelector(
+    UserReducerState,
+    simpleState => simpleState.msg,
+  );
+
+export { UserReducerState, getUsers, getUserByUsernameAndPassword, getMessage };
